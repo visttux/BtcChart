@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.visttux.btcchart"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.visttux.UiRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    kapt {
+        generateStubs = true
+    }
+    sourceSets {
+        androidTest.java.srcDirs += ["${project(':data').projectDir}/src/androidTest/java"]
+    }
+}
+
+dependencies {
+    def appDependencies = rootProject.ext.appDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    implementation project(':data')
+    implementation appDependencies.kotlin
+
+    //Dependency Injection
+    kapt appDependencies.daggerCompiler
+
+    //RX
+    implementation appDependencies.rxAndroid
+
+    //Navigation
+    implementation appDependencies.navigationFragmentKtx
+    implementation appDependencies.navigationKtx
+
+    //Design
+    implementation appDependencies.recyclerView
+    implementation appDependencies.appCompat
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.chart
+    implementation appDependencies.material
+
+    //Testing
+    testImplementation appTestDependencies.mockitoKotlin
+    testImplementation appTestDependencies.junit
+    testImplementation appTestDependencies.mockitoInline
+    testImplementation appTestDependencies.kotlinJunit
+    testImplementation appTestDependencies.hamcrest
+
+    androidTestImplementation project(':data')
+    androidTestImplementation appTestDependencies.espresso
+    androidTestImplementation appTestDependencies.androidJunit
+    androidTestImplementation appTestDependencies.runner
+    androidTestImplementation appTestDependencies.rules
+    androidTestImplementation appTestDependencies.mockWebServer
+}

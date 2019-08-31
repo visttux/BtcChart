@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    def dataDependencies = rootProject.ext.dataDependencies
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    implementation dataDependencies.kotlin
+
+    //Network
+    implementation dataDependencies.retrofit
+    implementation dataDependencies.retrofitRx
+    implementation dataDependencies.retrofitGson
+    implementation dataDependencies.stetho
+
+    //Images
+    implementation dataDependencies.glide
+    kapt dataDependencies.glideAP
+
+    //Dependency Injection
+    kapt dataDependencies.daggerCompiler
+
+    //Testing
+    testImplementation dataTestDependencies.mockitoKotlin
+    testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.mockitoInline
+    testImplementation dataTestDependencies.kotlinJunit
+    testImplementation dataTestDependencies.hamcrest
+}

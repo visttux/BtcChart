@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BTC Market Price</string>
+    <string name="_7_days">7 days</string>
+    <string name="_30_days">30 days</string>
+    <string name="_3_month">3 Month</string>
+    <string name="_6_months">6 months</string>
+    <string name="_1_year">1 year</string>
+    <string name="chart_title">BTC Price (USD)</string>
+</resources>

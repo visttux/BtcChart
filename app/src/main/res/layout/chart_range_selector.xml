@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        tools:background="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_2x"
+        android:layout_marginEnd="@dimen/margin_2x">
+    <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true"
+            app:checkedChip="@id/chip1y"
+    >
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip7d"
+                style="@style/ChipChoice"
+                android:text="@string/_7_days"
+        />
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip30d"
+                style="@style/ChipChoice"
+                android:text="@string/_30_days"
+        />
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip6m"
+                style="@style/ChipChoice"
+                android:text="@string/_6_months"
+        />
+
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip1y"
+                style="@style/ChipChoice"
+                android:text="@string/_1_year"
+        />
+
+    </com.google.android.material.chip.ChipGroup>
+</HorizontalScrollView>

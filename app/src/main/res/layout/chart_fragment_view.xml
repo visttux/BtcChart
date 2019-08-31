@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/dark_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:background="?attr/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/default_elevation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:titleTextColor="@color/white"/>
+
+        <include layout="@layout/chart_range_selector"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="@dimen/progress_bar_size"
+            android:layout_height="@dimen/progress_bar_size"
+            tools:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.visttux.btcchart.btc.chart.BtcChartView
+            android:id="@+id/chart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_2x"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
